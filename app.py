@@ -1,15 +1,17 @@
 from flask import Flask, jsonify, render_template, request
 import pymysql
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 def get_db_connection():
-    connection = pymysql.connect(host='mydb.ctq4gw6a811k.eu-central-1.rds.amazonaws.com',  # Replace with your RDS endpoint
-                                 user='dbuser',      # Replace with your RDS username
-                                 password='dbpassword',  # Replace with your RDS password
-                                 db='devprojdb',   # Replace with your database name
-                                 charset='utf8mb4',
-                                 cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(
+        host='mydb.c5su8yseyvqt.eu-central-1.rds.amazonaws.com',
+        user='dbuser',
+        password='dbpassword',
+        db='devprojdb',
+        charset='utf8mb4',
+        cursorclass=pymysql.cursors.DictCursor
+    )
     return connection
 
 @app.route('/health')
@@ -51,10 +53,9 @@ def data():
     connection.close()
     return jsonify(result)
 
-# UI route
 @app.route('/')
 def index():
     return render_template('index.html')
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     app.run(debug=True, host='0.0.0.0')
