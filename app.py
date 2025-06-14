@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, render_template, request
 import pymysql
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 def get_db_connection():
     connection = pymysql.connect(
